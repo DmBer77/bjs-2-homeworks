@@ -1,13 +1,54 @@
+"use strict"
+
 function solveEquation(a, b, c) {
-  let arr;
-  // код для задачи №1 писать здесь
-  return arr; // array
+    let arr
+    arr = [];
+
+    let dis = (b ** 2) - (4 * a * c);
+
+    if (dis === 0) {
+        let element1 = -b / (2 * a);
+        arr.push(element1);
+    }
+    if (dis > 0) {
+        let element1 = (-b + Math.sqrt(dis)) / (2 * a);
+        let element2 = (-b - Math.sqrt(dis)) / (2 * a);
+        arr.push(element1);
+        arr.push(element2);
+    }
+    return arr;
 }
 
 function calculateTotalMortgage(percent, contribution, amount, date) {
-  let totalAmount;
+    let totalAmount;
+    percent = Number(percent);
+    contribution = Number(contribution);
+    amount = Number(amount);
 
-  // код для задачи №2 писать здесь
+    if (typeof (percent) !== "number") {
+        console.log("Параметр <\"Процентная ставка\"> содержит неправильное значение \"test\"");
+    }
+    if (typeof (contribution) !== "number") {
+        console.log("'Параметр \"Начальный взнос\" содержит неправильное значение \"test\"");
+    }
+    if (typeof (amount) !== "number") {
+        console.log("Параметр \"Общая стоимость\" содержит неправильное значение \"test\"");
+    }
 
-  return totalAmount;
+
+
+
+    let creditBody = amount - contribution;
+    let dateFinish = date;
+    let dateStart = new Date();
+
+    let monthsOfCredit = (dateFinish.getMonth() - dateStart.getMonth() + (12 * (dateFinish.getFullYear() - dateStart.getFullYear())));
+    let percentagePerMonth = percent / 12 / 100;
+    let monthPayment = Number(creditBody * (percentagePerMonth + (percentagePerMonth / (((1 + percentagePerMonth) ** monthsOfCredit) - 1))));
+
+    totalAmount = (monthPayment * monthsOfCredit).toFixed(2);
+
+    console.log(totalAmount);
+
+    return totalAmount;
 }
