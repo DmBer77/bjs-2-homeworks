@@ -21,22 +21,19 @@ function solveEquation(a, b, c) {
 
 function calculateTotalMortgage(percent, contribution, amount, date) {
     let totalAmount;
-    percent = Number(percent);
-    contribution = Number(contribution);
-    amount = Number(amount);
+    // percent = Number(percent);
+    // contribution = Number(contribution);
+    // amount = Number(amount);
 
     if (typeof (percent) !== "number") {
-        console.log("Параметр <\"Процентная ставка\"> содержит неправильное значение \"test\"");
+        return "Параметр \"Процентная ставка\" содержит неправильное значение \"test\"";
     }
     if (typeof (contribution) !== "number") {
-        console.log("'Параметр \"Начальный взнос\" содержит неправильное значение \"test\"");
+        return "Параметр \"Начальный взнос\" содержит неправильное значение \"test\"";
     }
     if (typeof (amount) !== "number") {
-        console.log("Параметр \"Общая стоимость\" содержит неправильное значение \"test\"");
+        return "Параметр \"Общая стоимость\" содержит неправильное значение \"test\"";
     }
-
-
-
 
     let creditBody = amount - contribution;
     let dateFinish = date;
@@ -46,7 +43,7 @@ function calculateTotalMortgage(percent, contribution, amount, date) {
     let percentagePerMonth = percent / 12 / 100;
     let monthPayment = Number(creditBody * (percentagePerMonth + (percentagePerMonth / (((1 + percentagePerMonth) ** monthsOfCredit) - 1))));
 
-    totalAmount = (monthPayment * monthsOfCredit).toFixed(2);
+    totalAmount = Number((monthPayment * monthsOfCredit).toFixed(2));
 
     console.log(totalAmount);
 
