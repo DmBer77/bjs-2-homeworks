@@ -22,26 +22,22 @@ function getArrayParams(arr) {
 }
 
 // Задание 2
-function makeWork(arrOfArr, worker2) {
+function makeWork(arrOfArr, func) {
 
-    let arrOfArrMod = [];
+    let max = 0;
+    let elementOfArray = 0;
 
     for (let i = 0; i < arrOfArr.length; i++) {
-        arrOfArrMod.push(worker2(arrOfArr[i]));
-    }
-    let max = arrOfArrMod[0];
-
-    for (let i = 0; i < arrOfArrMod.length; i++) {
-        if (arrOfArrMod[i] >= max) {
-            max = arrOfArrMod[i];
+        elementOfArray = func(arrOfArr[i]);
+        if (elementOfArray >= max) {
+            max = elementOfArray;
         }
     }
     return max;
 }
 
 function worker(arr) {
-    let sum;
-    sum = 0;
+    let sum = 0;
 
     for (let i = 0; i < arr.length; i++) {
         sum = sum + arr[i];
@@ -53,7 +49,6 @@ function worker(arr) {
 function worker2(arr) {
     let max = arr[0];
     let min = arr[arr.length - 1];
-    let delta;
 
     for (let i = 0; i < arr.length; i++) {
         if (arr[i] >= max) {
@@ -62,7 +57,6 @@ function worker2(arr) {
         if (arr[i] < min) {
             min = arr[i];
         }
-        delta = Math.abs(max - min);
     }
-    return delta;
+    return Math.abs(max - min);
 }
