@@ -4,24 +4,21 @@ function Student(name, gender, age) {
     this.age = age;
 }
 
-let arrayOfMarks = [];
-
 Student.prototype.setSubject = function (subjectName) {
     this.subject = subjectName;
 }
 
 Student.prototype.addMark = function (mark) {
     if (this.marks === undefined) {
-        arrayOfMarks[0] = mark;
+        this.marks = [mark];
     } else {
-        arrayOfMarks.push(mark);
+        this.marks.push(mark);
         }
-    this.marks = arrayOfMarks;
 }
 
 Student.prototype.addMarks = function (...mark) {
-    arrayOfMarks = [];
-    this.marks = arrayOfMarks.concat(...mark);
+    this.marks = [];
+    this.marks.push(...mark);
 }
 
 Student.prototype.getAverage = function () {
