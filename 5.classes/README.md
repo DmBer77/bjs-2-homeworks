@@ -89,23 +89,27 @@ _Пример использования_
 const library = new Library("Библиотека имени Ленина");
 
 library.addBook(
-  new DetectiveBook(
-    "Артур Конан Дойл",
-    "Полное собрание повестей и рассказов о Шерлоке Холмсе в одном томе",
-    2019,
-    1008
-  )
+        {
+           book: new DetectiveBook(
+                   "Артур Конан Дойл",
+                   "Полное собрание повестей и рассказов о Шерлоке Холмсе в одном томе",
+                   2019,
+                   1008
+           )
+        }
 );
 library.addBook(
-  new FantasticBook(
-    "Аркадий и Борис Стругацкие",
-    "Пикник на обочине",
-    1972,
-    168
-  )
+        {
+           book: new FantasticBook(
+                   "Аркадий и Борис Стругацкие",
+                   "Пикник на обочине",
+                   1972,
+                   168
+           )
+        }
 );
-library.addBook(new NovelBook("Герберт Уэллс", "Машина времени", 1895, 138));
-library.addBook(new Magazine("Мурзилка", 1924, 60));
+library.addBook({book: new NovelBook("Герберт Уэллс", "Машина времени", 1895, 138)});
+library.addBook({book: new Magazine("Мурзилка", 1924, 60)});
 
 console.log(library.findBookBy("name", "Властелин колец")); //null
 console.log(library.findBookBy("releaseDate", 1924).name); //"Мурзилка"

@@ -89,15 +89,15 @@ describe('Домашнее задание к лекции 5 «Классы»', (
     });
     
     it('добавление книги', () => {
-      library.addBook(printItem);
+      library.addBook({book: printItem});
       expect(library.books[0].name).toEqual('Типовой школьный журнал');
       expect(library.books.length).toEqual(1);
     });
     
     it('поиск книги', () => {
       const printItemAdditional = new PrintEditionItem('Блокнот для заметок', 2021, 100);
-      library.addBook(printItemAdditional);
-      library.addBook(printItem);
+      library.addBook({book: printItemAdditional});
+      library.addBook({book: printItem});
       const firstBook = library.findBookBy("releaseDate", 2019);
       expect(firstBook.name).toEqual('Типовой школьный журнал');
       const secondBook = library.findBookBy("releaseDate", 2154);
@@ -105,7 +105,7 @@ describe('Домашнее задание к лекции 5 «Классы»', (
     });
     
     it('выдача книги', () => {
-      library.addBook(printItem);
+      library.addBook({book: printItem});
       const firstBook = library.giveBookByName('Типовой школьный журнал');
       expect(firstBook.name).toEqual('Типовой школьный журнал');
       expect(library.books.length).toEqual(0);
