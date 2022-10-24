@@ -87,65 +87,23 @@ class Library {
             result = null
         }
     }
-    //
-    // giveBookByName(bookName) {
-    //     let issuedBooks = [];
-    //
-    //     for (let i = 0; i < this.books.length; i++) {
-    //         if (this.books.name === bookName) {
-    //             issuedBooks.push(this.books[i]);
-    //             this.books.splice(i, 1);
-    //         }
-    //         if (issuedBooks.name === bookName) {
-    //             this.books.push(issuedBooks[i]);
-    //             issuedBooks.splice(i, 1);
-    //         } else {
-    //             return null
-    //         }
-    //     }
-    // }
 
+    giveBookByName(bookName) {
+        let issuedBooks = [];
 
-//Императивный подход
-//     findBookBy(type, value){
-//         let findBook = null;
-//         for ( let i = 0; i < this.books.length; i++ ){
-//             if (this.books[i][type] === value){
-//                 findBook = this.books[i]
-//             }
-//         }
-//         return findBook;
-//     }
-
-//Декларативный додход, после рефактоинга
-//     findBookBy(type, value) {
-//         let findBook = this.books.find((findBook) => findBook[type] === value);
-//         return findBook || null;
-//     }
-
-//Императивный подход
-    giveBookByName(bookName){
-        let giveBook = null;
-        for ( let i = 0; i < this.books.length; i++ ) {
-            if (this.books[i].name === bookName) {
-                giveBook = this.books[i];
+        for (let i = 0; i < this.books.length; i++) {
+            if (this.books.name === bookName) {
+                issuedBooks.push(this.books[i]);
                 this.books.splice(i, 1);
             }
+            if (issuedBooks.name === bookName) {
+                this.books.push(issuedBooks[i]);
+                issuedBooks.splice(i, 1);
+            } else {
+                return null
+            }
         }
-        return giveBook;
     }
-
-//После рефактоинга, используем собственный метод
-//     giveBookByName(bookName) {
-//         const giveBook = this.findBookBy("name", bookName);
-//         const index = this.books.indexOf(giveBook);
-//         if (index !== -1) {
-//             this.books.splice(index, 1);
-//             return giveBook;
-//         }
-//         return null;
-//     }
-
 }
 
 //    ---------------------------------------------------------------
