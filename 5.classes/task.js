@@ -82,9 +82,8 @@ class Library {
         for (let i = 0; i < this.books.length; i++) {
 
             if (this.books[i][type] === value) {
-                result = this.books[i];
+                return result || null
             }
-            result = null
         }
     }
 
@@ -100,7 +99,7 @@ class Library {
                 this.books.push(issuedBooks[i]);
                 issuedBooks.splice(i, 1);
             } else {
-                return null
+                return null;
             }
         }
     }
@@ -130,7 +129,8 @@ class Student {
             } else {
                 this.marks.push(subjectGrade);
             }
-        } console.log( "Ошибка, оценка должна быть числом от 1 до 5");
+        }
+        console.log("Ошибка, оценка должна быть числом от 1 до 5");
     }
 
     getAverage() {
