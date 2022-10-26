@@ -20,6 +20,7 @@ class Triangle {
         this.a = a;
         this.b = b;
         this.c = c;
+        this.result = 0;
 
         if (((this.a + this.b) <= this.c) ||
             ((this.a + this.c) <= this.b) ||
@@ -30,21 +31,23 @@ class Triangle {
     }
 
     getPerimeter() {
-        if (this.result !== Error) {
+        if (this.result === Error) {
+            throw new Error("Ошибка! Треугольник не существует");
+        } else {
             return this.a + this.b + this.c;
         }
-        throw new Error("Ошибка! Треугольник не существует");
     }
 
     getArea() {
-        if (this.result !== Error) {
+        if (this.result === Error) {
+            throw new Error("Ошибка! Треугольник не существует");
+        } else {
             let semiPerimeter = this.getPerimeter() / 2;
             return Number.parseFloat(Math.sqrt((semiPerimeter *
                 (semiPerimeter - this.a) *
                 (semiPerimeter - this.b) *
                 (semiPerimeter - this.c))).toFixed(3));
         }
-        throw new Error("Ошибка! Треугольник не существует");
     }
 }
 
@@ -54,6 +57,6 @@ function getTriangle(a, b, c) {
     } catch (error) {
         let triangle = new Triangle(a, b, c);
         triangle.getArea();
-        triangle.getPerimeter();
+        triangle.getPerimeter()
     }
 }
