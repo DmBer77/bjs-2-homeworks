@@ -71,37 +71,32 @@ class Library {
     }
 
     addBook(book) {
-        book = new Book();
         if (book.state > 30) {
             this.books.push(book);
         }
     }
 
     findBookBy(type, value) {
-        let result;
-        for (let i = 0; i < this.books.length; i++) {
+        let result = null;
 
+        for (let i = 0; i < this.books.length; i++) {
             if (this.books[i][type] === value) {
-                return result || null
+                result = this.books[i];
             }
         }
+        return result;
     }
 
     giveBookByName(bookName) {
-        let issuedBooks = [];
+        let issuedBooks = null;
 
         for (let i = 0; i < this.books.length; i++) {
-            if (this.books.name === bookName) {
-                issuedBooks.push(this.books[i]);
+            if (this.books[i].name === bookName) {
+                issuedBooks = this.books[i];
                 this.books.splice(i, 1);
             }
-            if (issuedBooks.name === bookName) {
-                this.books.push(issuedBooks[i]);
-                issuedBooks.splice(i, 1);
-            } else {
-                return null;
-            }
         }
+        return issuedBooks;
     }
 }
 
